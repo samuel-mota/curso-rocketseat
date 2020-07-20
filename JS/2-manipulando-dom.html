@@ -1,0 +1,79 @@
+<html>
+
+<head>
+	<title>Curso JS</title>
+</head>
+
+<body>
+	<input type="text" name="nome">
+	<button onClick="adicionar()">Adicionar</button>
+	<div class="lista"></div>
+
+	<button class="botao">Criar quadrado vermelho</button>
+	<div class="quadrados"></div>
+
+	<script>
+		// ex. 1 cria quadrados vermelhos
+		var botao = document.querySelector(".botao");
+		var container = document.querySelector('.quadrados');
+
+		botao.onclick = function () {
+			var elem = document.createElement("div");
+			elem.className = "quadrado";
+			elem.style.width = 100; //px
+			elem.style.height = 100;
+			elem.style.backgroundColor = "#f00";
+
+			container.appendChild(elem);
+
+			// ex. 2 muda cor do quadrado on hover
+			elem.onmouseover = function () {
+				this.style.backgroundColor = getRandomColor();
+			};
+		};
+
+		function getRandomColor() {
+			var letters = "0123456789ABCDEF";
+			var color = "#";
+			for (var i = 0; i < 6; i++) {
+				color += letters[Math.floor(Math.random() * 16)];
+			}
+			return color;
+		}
+		// var newColor = getRandomColor(); // #E943F0
+
+		// ex. 3 preencher list ul
+		var nomes = ["Samuel", "Diego", "Gabriel"];
+		var lista = document.createElement("ul");
+		var containerLista = document.querySelector(".lista");
+		containerLista.appendChild(lista);
+
+		function adicionarLI(itens) {
+
+			if (Array.isArray(itens)) {
+				for (let i = 0; i < itens.length; i++) {
+					var item = document.createElement("li");
+					lista.appendChild(item);
+					var texto = document.createTextNode(itens[i]);
+					item.appendChild(texto);
+				}
+			} else {
+				var item = document.createElement("li");
+				lista.appendChild(item);
+				var texto = document.createTextNode(itens);
+				item.appendChild(texto);
+			}
+		}
+		adicionarLI(nomes);
+
+		// ex. 4 adicionar mais itens na lista
+		var adicionar = function () {
+			var inputNome = document.querySelector("input[name=nome]");
+			var textoNome = inputNome.value;
+			adicionarLI(textoNome);
+			inputNome.value = "";
+		}
+	</script>
+</body>
+
+</html>

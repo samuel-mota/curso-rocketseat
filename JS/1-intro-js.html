@@ -1,0 +1,97 @@
+<html>
+
+<head>
+	<title>Curso JS</title>
+</head>
+
+<body>
+
+	<script>
+		// ex. 1
+		var endereco = {
+			rua: "Rua dos pinheiros",
+			numero: 1293,
+			bairro: "Centro",
+			cidade: "São Paulo",
+			uf: "SP"
+		};
+		console.log('O usuario mora em ' +
+			endereco.cidade + ' / ' +
+			endereco.uf + ', no bairro ' +
+			endereco.bairro + ', na rua "' +
+			endereco.rua + '" com n.o ' +
+			endereco.numero);
+
+		// ex. 2 - exibir todos numeros pares
+		function pares(x, y) {
+			for (let i = x; i <= y; i++) {
+				if ((i % 2) === 0) {
+					console.log(i);
+				}
+			}
+		}
+		pares(32, 321);
+
+		// ex. 3 - verifica se existe Javascript
+		function temHabilidade(skills) {
+			for (let i = 0; i < skills.length; i++) {
+				if (skills[i] === "Javascript") {
+					return true;
+				}
+				return false;
+			}
+		}
+		var skills = ["Javascript", "ReactJS", "React Native"];
+		console.log(temHabilidade(skills));
+
+		// ex. 4 - recebe anos de estudo e retorna quao esperiente user eh
+		function experiencia(anos) {
+			var exp;
+			switch (anos) {
+				case 0:
+				case 1:
+					exp = "Iniciante";
+					break;
+				case 2:
+				case 3:
+					exp = "Intermediario";
+					break;
+				case 4:
+				case 5:
+				case 6:
+					exp = "Avancado";
+					break;
+				case 7:
+					exp = "Jedi Master";
+				default:
+					exp = "---";
+			}
+
+			return exp;
+		}
+		var anosEstudo = 8;
+		console.log(experiencia(anosEstudo));
+		// De 0-1 ano: Iniciante
+		// De 1-3 anos: Intermediário
+		// De 3-6 anos: Avançado
+		// De 7 acima: Jedi Master
+
+		// ex. 7
+		var usuarios = [{
+				nome: "Diego",
+				habilidades: ["Javascript", "ReactJS", "Redux"]
+			},
+			{
+				nome: "Gabriel",
+				habilidades: ["VueJS", "Ruby on Rails", "Elixir"]
+			}
+		];
+
+		for (const user of usuarios) {
+			console.log("O " + user.nome + " possui as habilidades: " 
+			+ user.habilidades.join(', ') + ".");
+		}
+	</script>
+</body>
+
+</html>
